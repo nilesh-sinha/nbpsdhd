@@ -1,0 +1,58 @@
+<div class="page-header">
+  <h2 class="text-center">Notice Board</h2>
+</div>
+<div class="row" *ngIf="notice && notice.length > 0;else statusMessage">
+  <div class="notice" id="noticePanelsStayOpenExample">
+    <ng-container *ngFor="let item of notice; let i = index">
+      <div class="notice-item">
+        <div class="notice-header">
+          <h4 class="text-center">{{item.title}}</h4>
+          <div class="row">
+            <div class="col-6 text-center">
+              <h6>{{item.createdTs ? item.createdTs : ''}}</h6>
+            </div>
+            <div class="col-6 text-center">
+              <h6> --&nbsp;{{item.createdBy ? item.createdBy : 'School Admin'}}</h6>
+            </div>
+          </div>
+        </div>
+        <div class="notice-body collapse show"
+          attr.aria-labelledby="{{'panelsStayOpen-heading' + i}}">
+          <p>
+            {{item.content}}
+          </p>
+        </div>
+        <div *ngIf="item.pictureUrls">
+          <img [src]="item.pictureUrls" style="width: 100%; height: auto;" alt="" srcset="">
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+  <!-- <div class="accordion" id="accordionPanelsStayOpenExample">
+    <ng-container *ngFor="let item of notice; let i = index">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="{{'panelsStayOpen-heading' + i}}">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+            attr.data-bs-target="{{'#panelsStayOpen-collapse' + i}}" aria-expanded="true"
+            attr.aria-controls="{{'panelsStayOpen-collapse' + i}}">
+            {{item.title}}
+          </button>
+        </h2>
+        <div id="{{'panelsStayOpen-collapse' + i}}" class="accordion-collapse collapse show"
+          attr.aria-labelledby="{{'panelsStayOpen-heading' + i}}">
+          <div class="accordion-body">
+            {{item.content}}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+  </div> -->
+
+</div>
+<ng-template #statusMessage>
+  <div class="notice-alert">
+    {{notice == undefined ? 'Loading...' : 'No new notifications.'}}
+  </div>
+</ng-template>
