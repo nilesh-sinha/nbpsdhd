@@ -15,11 +15,11 @@ const routes: Routes = [
   { path: 'notification', component: NoticeWindowComponent},
   { path: 'fee-payment', component: ComingSoonComponent},
   { path: '*', redirectTo: 'not-found'},
-  { path: 'not-found', component: PageNotFoundComponent }
+  { path: 'not-found', component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
