@@ -12,7 +12,7 @@ import { AboutComponent } from './shared/about/about.component';
 import { ContactComponent } from './shared/contact/contact.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     HttpClientModule
   ],
   providers: [
-    { provide: LocationStrategy, useClass: PathLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
